@@ -7,30 +7,67 @@
 
 import SwiftUI
 import CoreAudio
-import AVKit
+import AVFoundation
 
 struct ContentView: View {
+    
+    @State var sound: AVAudioPlayer!
+    @State var engine = AVAudioEngine()
+    @State var speedControl = AVAudioUnitVarispeed()
+    @State var pitchControl = AVAudioUnitTimePitch()
+ 
+
+    // 2: create the audio player
+    @State var audioPlayer = AVAudioPlayerNode()
+    
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-            .onAppear { generate_pitch(frequency: 440)}
+        VStack{
+            Text("Hello, world!").padding()
+            
+            Button("Play Sound"){
+                play_numbers(notes:[0.0,200.0,400.0,500.0,700.0,400.0,700.0,400.0,200.0,400.0,500,200.0,400.0,700])
+               
+            }
+            
+        }
     }
-
-
-    func generate_pitch(frequency:Int){
+    
+    func play_numbers(notes:[Float]){
+        
+        let starting_offset:Float = -pow(2.0, 11.0) - 12000
+        
+        let time_increment = 0.15
+        var current_time = DispatchTime.now()
         
         
-        let engine = AVAudioEngine()
-        let speedControl = AVAudioUnitVarispeed()
-        let pitchControl = AVAudioUnitTimePitch()
+        for note in notes{
+            
+            DispatchQueue.main.asyncAfter(deadline: current_time+time_increment) {
+                generate_pitch(frequency: starting_offset + note)
+            }
+            
+            current_time = current_time + time_increment
+        }
+                    
+    }
+    
+    func generate_pitch(frequency:Float){
         
+        speedControl.rate = 10
+        pitchControl.pitch = frequency
         
+        let soundFileURL = Bundle.main.url(forResource: "A", withExtension: "mp3")!
+//        do{
+//            self.sound = try AVAudioPlayer(contentsOf: soundFileURL)
+//            self.sound?.play()
+//        }
+//        catch{
+//            print(":(")
+//        }
         func play(_ url: URL) throws {
             // 1: load the file
             let file = try AVAudioFile(forReading: url)
-
-            // 2: create the audio player
-            let audioPlayer = AVAudioPlayerNode()
 
             // 3: connect the components to our playback engine
             engine.attach(audioPlayer)
@@ -49,20 +86,10 @@ struct ContentView: View {
             try engine.start()
             audioPlayer.play()
         }
-        
-        do {
-            try play(
-                Bundle.main.url(forResource: "A", withExtension: "mp3")!
-            )
-        }
-        catch{
-            print("Couldn't play file")
-        }
-        
+        try! play(soundFileURL)
+
     }
-
-    
-
+           
 }
 
 struct ContentView_Previews: PreviewProvider {
