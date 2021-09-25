@@ -35,7 +35,7 @@ struct ContentView: View {
     
     func play_numbers(notes:[Float]){
         
-        let starting_offset:Float = -pow(2.0, 11.0)
+        let starting_offset:Float = -pow(2.0, 11.0) - 12000
         
         let time_increment = 0.15
         var current_time = DispatchTime.now()
