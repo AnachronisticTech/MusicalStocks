@@ -13,6 +13,8 @@
 		91308C3E26FF88A60010585B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91308C2926FF88A50010585B /* ContentView.swift */; };
 		91308C3F26FF88A60010585B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91308C2A26FF88A50010585B /* Assets.xcassets */; };
 		91308C4026FF88A60010585B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91308C2A26FF88A50010585B /* Assets.xcassets */; };
+		D0EFD5A526FF91370042D2BB /* A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0EFD5A426FF91370042D2BB /* A.mp3 */; };
+		D0EFD5A626FF91370042D2BB /* A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0EFD5A426FF91370042D2BB /* A.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		91308C3726FF88A50010585B /* MusicalStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicalStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91308C3926FF88A50010585B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91308C3A26FF88A50010585B /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		D0EFD5A426FF91370042D2BB /* A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,7 @@
 				91308C2826FF88A50010585B /* MusicalStocksApp.swift */,
 				91308C2926FF88A50010585B /* ContentView.swift */,
 				91308C2A26FF88A50010585B /* Assets.xcassets */,
+				D0EFD5A426FF91370042D2BB /* A.mp3 */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -168,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0EFD5A526FF91370042D2BB /* A.mp3 in Resources */,
 				91308C3F26FF88A60010585B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0EFD5A626FF91370042D2BB /* A.mp3 in Resources */,
 				91308C4026FF88A60010585B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SDPTWQFVDC;
+				DEVELOPMENT_TEAM = VBYH758TJ3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -343,7 +349,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SDPTWQFVDC;
+				DEVELOPMENT_TEAM = VBYH758TJ3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -369,7 +375,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = SDPTWQFVDC;
+				DEVELOPMENT_TEAM = VBYH758TJ3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -394,7 +400,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = SDPTWQFVDC;
+				DEVELOPMENT_TEAM = VBYH758TJ3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
