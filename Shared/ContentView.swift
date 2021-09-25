@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var speedControl = AVAudioUnitVarispeed()
     @State var pitchControl = AVAudioUnitTimePitch()
  
+    @State private var stock_symbol:String = "AAPL"
 
     // 2: create the audio player
     @State var audioPlayer = AVAudioPlayerNode()
@@ -24,24 +25,35 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            Text("Hello, world!").padding()
-            
+            Text("Morse Stocks").padding()
+            TextField("AAPL", text: $stock_symbol).padding()
             Button("Play Sound"){
-                try! stockDataDownloader.fetchStockData() { result in
+                try! stockDataDownloader.fetchStockData(for: stock_symbol) { result in
                     switch result {
                         case .success(let webdata):
                             
                             let biggest = webdata.c.max()!
                             let smallest = webdata.c.min()!
                         
-                            let notes = webdata.c.map({ Float( 3000*($0-smallest) / (biggest-smallest) ) })
-                            play_numbers(notes: notes)
+                            let notes = webdata.c.map({  2000*Float(($0-smallest) / (biggest-smallest) ) })
+                            
+                            var new_notes = [Float]()
+                        
+                            var counter = 0
+                            for note in notes{
+                                if counter % 5 == 0{
+                                    new_notes.append(note)
+                                }
+                                
+                                counter+=1
+                            }
+                        
+                            play_numbers(notes: new_notes)
                         case .failure(let error):
                             print(error)
                     }
                 }
-               
-            }
+            }.padding()
             
         }
     }
@@ -69,7 +81,7 @@ struct ContentView: View {
     
     func generate_pitch(frequency:Float){
         
-        speedControl.rate = 10
+        speedControl.rate = 10.0
         pitchControl.pitch = frequency
         
         let soundFileURL = Bundle.main.url(forResource: "A", withExtension: "mp3")!
