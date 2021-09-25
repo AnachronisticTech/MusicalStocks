@@ -27,8 +27,7 @@ struct ContentView: View {
             Text("Hello, world!").padding()
             
             Button("Play Sound"){
-
-                try! stockDataDownloader.fetchStockData(for: "") { result in
+                try! stockDataDownloader.fetchStockData() { result in
                     switch result {
                         case .success(let webdata):
                             let notes = webdata.c.map({ Float($0 * 100 - 12000) })

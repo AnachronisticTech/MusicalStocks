@@ -14,10 +14,13 @@ class StockPriceDownloader: ObservableObject {
     private init() {}
 
     func fetchStockData(
-        for symbol: String,
+        for symbol: String = "AAPL",
         _ completion: @escaping (Result<WebData, MusicalStocksError>) -> () = { _ in }
     ) throws {
-        let url = URL(string: "https://finnhub.io/api/v1/stock/candle?symbol=AAPL&resolution=1&from=1615298999&to=1615302599")!
+        let currentTime = Date()
+            .timeIntervalSince1970
+            .rounded()
+        let url = URL(string: "https://finnhub.io/api/v1/stock/candle?symbol=\(symbol)&resolution=1&from=1615298999&to=\(Int(currentTime))")!
         var request = URLRequest(url: url)
         request.addValue(Constants.finnhubSandboxAPIKey, forHTTPHeaderField: "X-Finnhub-Token")
         URLSession.shared
