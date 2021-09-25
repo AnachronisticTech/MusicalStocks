@@ -12,6 +12,7 @@ struct MusicalStocksApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(StockPriceDownloader.shared)
         }
     }
 }

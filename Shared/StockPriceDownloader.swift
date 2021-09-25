@@ -25,15 +25,6 @@ class StockPriceDownloader: ObservableObject {
                 completion(Decoders.dataDecoder.decode(result))
             }
             .resume()
-
-//            try! stockDataDownloader.fetchStockData(for: "") { result in
-//                switch result {
-//                    case .success(let webdata):
-//                        print(webdata.c.map({ Float($0 * 1000) }))
-//                    case .failure(let error):
-//                        print(error)
-//                }
-//            }
     }
 }
 

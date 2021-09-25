@@ -10,6 +10,7 @@ import CoreAudio
 import AVFoundation
 
 struct ContentView: View {
+    @EnvironmentObject var stockDataDownloader: StockPriceDownloader
     
     @State var sound: AVAudioPlayer!
     @State var engine = AVAudioEngine()
@@ -26,7 +27,17 @@ struct ContentView: View {
             Text("Hello, world!").padding()
             
             Button("Play Sound"){
-                play_numbers(notes:[0.0,200.0,400.0,500.0,700.0,400.0,700.0,400.0,200.0,400.0,500,200.0,400.0,700])
+
+                try! stockDataDownloader.fetchStockData(for: "") { result in
+                    switch result {
+                        case .success(let webdata):
+                            let notes = webdata.c.map({ Float($0 * 1000) })
+                            play_numbers(notes: notes)
+                        case .failure(let error):
+                            print(error)
+                    }
+                }
+//                play_numbers(notes:[0.0,200.0,400.0,500.0,700.0,400.0,700.0,400.0,200.0,400.0,500,200.0,400.0,700])
                
             }
             
@@ -95,6 +106,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(StockPriceDownloader.shared)
     }
 }
 
