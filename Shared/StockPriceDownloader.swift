@@ -20,7 +20,8 @@ class StockPriceDownloader: ObservableObject {
         let currentTime = Date()
             .timeIntervalSince1970
             .rounded()
-        let url = URL(string: "https://finnhub.io/api/v1/stock/candle?symbol=\(symbol)&resolution=1&from=\(Int(currentTime)-15000)&to=\(Int(currentTime))")!
+        let startTime = Int(currentTime) - 15000
+        let url = URL(string: "https://finnhub.io/api/v1/stock/candle?symbol=\(symbol)&resolution=1&from=\(startTime)&to=\(Int(currentTime))")!
         var request = URLRequest(url: url)
         request.addValue(Constants.finnhubSandboxAPIKey, forHTTPHeaderField: "X-Finnhub-Token")
         URLSession.shared

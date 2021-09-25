@@ -34,8 +34,10 @@ struct ContentView: View {
                             
                             let biggest = webdata.c.max()!
                             let smallest = webdata.c.min()!
-                        
-                            let notes = webdata.c.map({  2000*Float(($0-smallest) / (biggest-smallest) ) })
+
+                            let notes = webdata.c.map { value in
+                                2000 * Float((value-smallest) / (biggest-smallest))
+                            }
                             
                             var new_notes = [Float]()
                         
