@@ -31,13 +31,16 @@ struct ContentView: View {
                 try! stockDataDownloader.fetchStockData(for: "") { result in
                     switch result {
                         case .success(let webdata):
-                            let notes = webdata.c.map({ Float($0 * 100 - 12000) })
+                            
+                            let biggest = webdata.c.max()!
+                            let smallest = webdata.c.min()!
+                        
+                            let notes = webdata.c.map({ Float( 3000*($0-smallest) / (biggest-smallest) ) })
                             play_numbers(notes: notes)
                         case .failure(let error):
                             print(error)
                     }
                 }
-//                play_numbers(notes:[0.0,200.0,400.0,500.0,700.0,400.0,700.0,400.0,200.0,400.0,500,200.0,400.0,700])
                
             }
             
