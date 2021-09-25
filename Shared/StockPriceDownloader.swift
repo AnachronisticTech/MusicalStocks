@@ -120,6 +120,5 @@ struct WebData: Codable {
 }
 
 struct Constants {
-    static let polygonAPIKey = "PcMBQ9pydWrK3LAnC8NtYe3YbrsYSr8K"
-    static let finnhubSandboxAPIKey = "sandbox_c57n1jiad3idnp0qq8f0"
+    static let finnhubSandboxAPIKey = ""
 }
