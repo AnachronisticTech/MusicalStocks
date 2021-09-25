@@ -31,7 +31,7 @@ struct ContentView: View {
                 try! stockDataDownloader.fetchStockData(for: "") { result in
                     switch result {
                         case .success(let webdata):
-                            let notes = webdata.c.map({ Float($0 * 1000) })
+                            let notes = webdata.c.map({ Float($0 * 100 - 12000) })
                             play_numbers(notes: notes)
                         case .failure(let error):
                             print(error)
@@ -46,7 +46,9 @@ struct ContentView: View {
     
     func play_numbers(notes:[Float]){
         
-        let starting_offset:Float = -pow(2.0, 11.0) - 12000
+        print(notes)
+        
+        let starting_offset:Float = -pow(2.0,11.5)
         
         let time_increment = 0.15
         var current_time = DispatchTime.now()
